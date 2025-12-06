@@ -77,6 +77,7 @@ auto pApplication::state() -> State& {
 
 auto pApplication::initialize() -> void {
   #if defined(DISPLAY_XORG)
+  gdk_set_allowed_backends("x11");
   state().display = XOpenDisplay(nullptr);
   state().screenSaverXDG = (bool)execute("xdg-screensaver", "--version").output.find("xdg-screensaver");
 
